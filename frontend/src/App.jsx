@@ -36,7 +36,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white relative">
       <Sidebar 
         isOpen={isSidebarOpen} 
         onClose={() => setIsSidebarOpen(false)}
@@ -44,17 +44,19 @@ function App() {
         onNavigate={handleNavigate}
       />
       
-      <Header 
-        onMenuClick={() => setIsSidebarOpen(!isSidebarOpen)} 
-        searchQuery={searchQuery}
-        onSearchChange={setSearchQuery}
-      />
-      
-      <main>
-        {renderPage()}
-      </main>
-      
-      <Footer />
+      <div className="relative z-0">
+        <Header 
+          onMenuClick={() => setIsSidebarOpen(!isSidebarOpen)} 
+          searchQuery={searchQuery}
+          onSearchChange={setSearchQuery}
+        />
+        
+        <main className="relative">
+          {renderPage()}
+        </main>
+        
+        <Footer />
+      </div>
     </div>
   );
 }

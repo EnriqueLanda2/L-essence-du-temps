@@ -29,10 +29,10 @@ export function Inicio({ searchQuery, onProductClick }) {
   return (
     <div>
       {/* Hero Carousel Section */}
-      <section className="relative h-[70vh] md:h-[80vh] bg-black">
+      <section className="relative h-[60vh] sm:h-[70vh] md:h-[80vh] bg-black">
         <Slider {...sliderSettings} className="h-full">
           {carouselSlides.map((slide, index) => (
-            <div key={index} className="h-[70vh] md:h-[80vh] relative">
+            <div key={index} className="h-[60vh] sm:h-[70vh] md:h-[80vh] relative">
               <div 
                 className="absolute inset-0 bg-cover bg-center"
                 style={{ 
@@ -40,12 +40,12 @@ export function Inicio({ searchQuery, onProductClick }) {
                   opacity: 0.5
                 }}
               />
-              <div className="relative h-full flex items-center justify-center text-center px-6">
+              <div className="relative h-full flex items-center justify-center text-center px-4 sm:px-6">
                 <div className="max-w-4xl">
-                  <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  <h2 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-4 sm:mb-6 tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
                     {slide.title}
                   </h2>
-                  <p className="text-xl md:text-3xl text-white/90 font-light tracking-wide">
+                  <p className="text-base sm:text-xl md:text-3xl text-white/90 font-light tracking-wide">
                     {slide.subtitle}
                   </p>
                 </div>
@@ -58,51 +58,51 @@ export function Inicio({ searchQuery, onProductClick }) {
       <TrustBanner />
 
       {/* Products Section */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
-        <div className="mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-4 text-center tracking-tight font-playfair">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <div className="mb-8 sm:mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-3 sm:mb-4 text-center tracking-tight font-playfair">
             Colección Premium
           </h2>
-          <p className="text-center text-gray-600 max-w-2xl mx-auto">
+          <p className="text-center text-sm sm:text-base text-gray-600 max-w-2xl mx-auto px-4">
             Descubre nuestra selección de relojes y perfumes de las mejores marcas
           </p>
         </div>
 
         {filteredProducts.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {filteredProducts.map(product => (
               <ProductCard key={product.id} {...product} onProductClick={onProductClick} />
             ))}
           </div>
         ) : (
-          <div className="text-center py-16">
-            <p className="text-gray-500 text-lg">No se encontraron productos que coincidan con "{searchQuery}"</p>
+          <div className="text-center py-12 sm:py-16">
+            <p className="text-gray-500 text-base sm:text-lg px-4">No se encontraron productos que coincidan con "{searchQuery}"</p>
           </div>
         )}
       </section>
 
       {/* Reviews Section */}
-      <section className="bg-gray-50 py-20 border-y border-gray-200">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-12 text-center tracking-tight font-playfair">
+      <section className="bg-gray-50 py-12 sm:py-16 md:py-20 border-y border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-8 sm:mb-12 text-center tracking-tight font-playfair">
             Opiniones de Clientes
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {reviews.map((review, index) => (
-              <div key={index} className="bg-white rounded-none p-8 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+              <div key={index} className="bg-white rounded-none p-6 sm:p-8 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex items-center gap-1 mb-4">
                   {[...Array(review.rating)].map((_, i) => (
-                    <svg key={i} className="w-5 h-5 fill-black text-black" viewBox="0 0 20 20">
+                    <svg key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-black text-black" viewBox="0 0 20 20">
                       <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
                     </svg>
                   ))}
                 </div>
-                <p className="text-gray-700 mb-6 leading-relaxed italic">
+                <p className="text-sm sm:text-base text-gray-700 mb-4 sm:mb-6 leading-relaxed italic">
                   "{review.comment}"
                 </p>
                 <div className="flex justify-between items-center pt-4 border-t border-gray-200">
-                  <span className="font-semibold text-black tracking-wide">{review.name}</span>
+                  <span className="text-sm sm:text-base font-semibold text-black tracking-wide">{review.name}</span>
                   <span className="text-xs text-gray-500 uppercase tracking-wider">{review.date}</span>
                 </div>
               </div>

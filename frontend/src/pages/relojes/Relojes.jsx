@@ -13,7 +13,7 @@ export function Relojes({ searchQuery, onProductClick }) {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative h-[50vh] bg-black">
+      <section className="relative h-[40vh] sm:h-[50vh] bg-black">
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ 
@@ -21,12 +21,12 @@ export function Relojes({ searchQuery, onProductClick }) {
             opacity: 0.4
           }}
         />
-        <div className="relative h-full flex items-center justify-center text-center px-6">
+        <div className="relative h-full flex items-center justify-center text-center px-4 sm:px-6">
           <div className="max-w-4xl">
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight font-playfair">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-4 sm:mb-6 tracking-tight font-playfair">
               Relojes de Lujo
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 font-light tracking-wide">
+            <p className="text-base sm:text-xl md:text-2xl text-white/90 font-light tracking-wide">
               Precisión suiza y diseño atemporal
             </p>
           </div>
@@ -34,25 +34,25 @@ export function Relojes({ searchQuery, onProductClick }) {
       </section>
 
       {/* Products Section */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
-        <div className="mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-4 text-center tracking-tight font-playfair">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <div className="mb-8 sm:mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-3 sm:mb-4 text-center tracking-tight font-playfair">
             Nuestra Colección de Relojes
           </h2>
-          <p className="text-center text-gray-600 max-w-2xl mx-auto">
+          <p className="text-center text-sm sm:text-base text-gray-600 max-w-2xl mx-auto px-4">
             Relojes de alta relojería con movimientos suizos y diseños excepcionales
           </p>
         </div>
 
         {relojes.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {relojes.map(product => (
               <ProductCard key={product.id} {...product} onProductClick={onProductClick} />
             ))}
           </div>
         ) : (
-          <div className="text-center py-16">
-            <p className="text-gray-500 text-lg">
+          <div className="text-center py-12 sm:py-16">
+            <p className="text-gray-500 text-base sm:text-lg px-4">
               {searchQuery 
                 ? `No se encontraron relojes que coincidan con "${searchQuery}"` 
                 : 'No hay relojes disponibles en este momento.'}
@@ -62,24 +62,24 @@ export function Relojes({ searchQuery, onProductClick }) {
       </section>
 
       {/* Info Section */}
-      <section className="bg-gray-50 py-20 border-y border-gray-200">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <section className="bg-gray-50 py-12 sm:py-16 md:py-20 border-y border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
             <div className="text-center">
-              <h3 className="text-2xl font-bold text-black mb-4 font-playfair">Movimientos Suizos</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl sm:text-2xl font-bold text-black mb-3 sm:mb-4 font-playfair">Movimientos Suizos</h3>
+              <p className="text-sm sm:text-base text-gray-600">
                 Calibres automáticos y de cuarzo de la más alta precisión y calidad.
               </p>
             </div>
             <div className="text-center">
-              <h3 className="text-2xl font-bold text-black mb-4 font-playfair">Materiales Premium</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl sm:text-2xl font-bold text-black mb-3 sm:mb-4 font-playfair">Materiales Premium</h3>
+              <p className="text-sm sm:text-base text-gray-600">
                 Acero inoxidable 316L, oro, cristal de zafiro y correas de piel italiana.
               </p>
             </div>
             <div className="text-center">
-              <h3 className="text-2xl font-bold text-black mb-4 font-playfair">Garantía Internacional</h3>
-              <p className="text-gray-600">
+              <h3 className="text-xl sm:text-2xl font-bold text-black mb-3 sm:mb-4 font-playfair">Garantía Internacional</h3>
+              <p className="text-sm sm:text-base text-gray-600">
                 Todos nuestros relojes incluyen garantía del fabricante y certificado de autenticidad.
               </p>
             </div>

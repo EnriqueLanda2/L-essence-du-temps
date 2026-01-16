@@ -49,19 +49,19 @@ export function DetalleProducto({ productId, onBack }) {
   return (
     <div className="min-h-screen bg-white">
       {/* Breadcrumb / Back Button */}
-      <div className="max-w-7xl mx-auto px-6 py-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
         <button
           onClick={onBack}
           className="flex items-center gap-2 text-gray-600 hover:text-black transition-colors"
         >
           <ArrowLeft className="w-5 h-5" />
-          <span>Volver</span>
+          <span className="text-sm sm:text-base">Volver</span>
         </button>
       </div>
 
       {/* Product Details */}
-      <div className="max-w-7xl mx-auto px-6 pb-16">
-        <div className="grid md:grid-cols-2 gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-12 sm:pb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
           {/* Image Carousel */}
           <div className="relative">
             <Slider ref={sliderRef} {...sliderSettings}>
@@ -70,7 +70,7 @@ export function DetalleProducto({ productId, onBack }) {
                   <img 
                     src={img} 
                     alt={`${product.name} - imagen ${index + 1}`}
-                    className="w-full h-[600px] object-cover"
+                    className="w-full h-[350px] sm:h-[450px] lg:h-[600px] object-cover"
                   />
                 </div>
               ))}
@@ -79,68 +79,68 @@ export function DetalleProducto({ productId, onBack }) {
             {/* Custom Navigation Arrows */}
             <button
               onClick={() => sliderRef.current?.slickPrev()}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all z-10"
+              className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all z-10"
             >
-              <ChevronLeft className="w-6 h-6" />
+              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
             <button
               onClick={() => sliderRef.current?.slickNext()}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all z-10"
+              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all z-10"
             >
-              <ChevronRight className="w-6 h-6" />
+              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
           </div>
 
           {/* Product Info */}
           <div className="flex flex-col">
-            <h1 className="text-4xl font-bold text-black mb-4 font-playfair">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black mb-3 sm:mb-4 font-playfair">
               {product.name}
             </h1>
             
             {/* Rating */}
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
               <div className="flex items-center gap-1">
                 {[...Array(5)].map((_, i) => (
                   <Star 
                     key={i} 
-                    className={`w-5 h-5 ${i < Math.floor(product.rating) ? 'fill-black text-black' : 'text-gray-300'}`}
+                    className={`w-4 h-4 sm:w-5 sm:h-5 ${i < Math.floor(product.rating) ? 'fill-black text-black' : 'text-gray-300'}`}
                   />
                 ))}
               </div>
-              <span className="text-gray-600">({product.reviews} reseñas)</span>
+              <span className="text-sm sm:text-base text-gray-600">({product.reviews} reseñas)</span>
             </div>
 
             {/* Price */}
-            <div className="mb-8">
-              <div className="flex items-baseline gap-4 mb-2">
+            <div className="mb-6 sm:mb-8">
+              <div className="flex items-baseline gap-3 sm:gap-4 mb-2 flex-wrap">
                 {product.discount ? (
                   <>
-                    <span className="text-4xl font-bold text-black">
+                    <span className="text-3xl sm:text-4xl font-bold text-black">
                       ${discountedPrice.toFixed(2)}
                     </span>
-                    <span className="text-2xl text-gray-400 line-through">
+                    <span className="text-xl sm:text-2xl text-gray-400 line-through">
                       ${product.price.toFixed(2)}
                     </span>
                   </>
                 ) : (
-                  <span className="text-4xl font-bold text-black">
+                  <span className="text-3xl sm:text-4xl font-bold text-black">
                     ${product.price.toFixed(2)}
                   </span>
                 )}
               </div>
               {product.discount && (
-                <div className="inline-block bg-black text-white px-4 py-1 text-sm font-semibold">
+                <div className="inline-block bg-black text-white px-3 sm:px-4 py-1 text-xs sm:text-sm font-semibold">
                   AHORRA {product.discount}% - ${(product.price - discountedPrice).toFixed(2)} DE DESCUENTO
                 </div>
               )}
             </div>
 
             {/* Stock Status */}
-            <div className="mb-8">
-              <div className={`flex items-center gap-2 text-lg font-semibold ${
+            <div className="mb-6 sm:mb-8">
+              <div className={`flex items-center gap-2 text-base sm:text-lg font-semibold ${
                 product.inStock ? 'text-green-600' : 'text-red-600'
               }`}>
-                <div className={`w-3 h-3 rounded-full ${
+                <div className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full ${
                   product.inStock ? 'bg-green-600' : 'bg-red-600'
                 }`}></div>
                 <span>{product.inStock ? 'En Stock - Envío Inmediato' : 'Agotado'}</span>
@@ -148,17 +148,17 @@ export function DetalleProducto({ productId, onBack }) {
             </div>
 
             {/* Description */}
-            <div className="mb-8">
-              <h3 className="text-xl font-bold mb-3">Descripción</h3>
-              <p className="text-gray-700 leading-relaxed text-lg">
+            <div className="mb-6 sm:mb-8">
+              <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3">Descripción</h3>
+              <p className="text-gray-700 leading-relaxed text-base sm:text-lg">
                 {product.description}
               </p>
             </div>
 
             {/* Features */}
-            <div className="mb-8 p-6 bg-gray-50 border border-gray-200">
-              <h3 className="text-xl font-bold mb-4">Características</h3>
-              <ul className="space-y-2 text-gray-700">
+            <div className="mb-6 sm:mb-8 p-4 sm:p-6 bg-gray-50 border border-gray-200">
+              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Características</h3>
+              <ul className="space-y-2 text-sm sm:text-base text-gray-700">
                 <li className="flex items-start gap-2">
                   <span className="text-black font-bold mt-1">•</span>
                   <span>Autenticidad 100% garantizada</span>
@@ -180,7 +180,7 @@ export function DetalleProducto({ productId, onBack }) {
 
             {/* Add to Cart Button */}
             <button
-              className={`w-full py-6 text-white text-lg font-semibold tracking-wider transition-colors ${
+              className={`w-full py-4 sm:py-6 text-white text-base sm:text-lg font-semibold tracking-wider transition-colors ${
                 product.inStock
                   ? 'bg-black hover:bg-gray-800'
                   : 'bg-gray-400 cursor-not-allowed'
@@ -191,18 +191,18 @@ export function DetalleProducto({ productId, onBack }) {
             </button>
 
             {/* Additional Info */}
-            <div className="mt-8 grid grid-cols-3 gap-4 text-center text-sm">
-              <div className="p-4 border border-gray-200">
+            <div className="mt-6 sm:mt-8 grid grid-cols-3 gap-2 sm:gap-4 text-center text-xs sm:text-sm">
+              <div className="p-2 sm:p-4 border border-gray-200">
                 <div className="font-bold mb-1">ENVÍO GRATIS</div>
-                <div className="text-gray-600">Compras +$100</div>
+                <div className="text-gray-600 text-xs sm:text-sm">Compras +$100</div>
               </div>
-              <div className="p-4 border border-gray-200">
+              <div className="p-2 sm:p-4 border border-gray-200">
                 <div className="font-bold mb-1">GARANTÍA</div>
-                <div className="text-gray-600">100% Original</div>
+                <div className="text-gray-600 text-xs sm:text-sm">100% Original</div>
               </div>
-              <div className="p-4 border border-gray-200">
+              <div className="p-2 sm:p-4 border border-gray-200">
                 <div className="font-bold mb-1">DEVOLUCIÓN</div>
-                <div className="text-gray-600">30 días</div>
+                <div className="text-gray-600 text-xs sm:text-sm">30 días</div>
               </div>
             </div>
           </div>
@@ -210,9 +210,9 @@ export function DetalleProducto({ productId, onBack }) {
       </div>
 
       {/* Related Products Section (opcional) */}
-      <div className="bg-gray-50 py-16 border-t border-gray-200">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-black mb-8 font-playfair">
+      <div className="bg-gray-50 py-12 sm:py-16 border-t border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <h2 className="text-2xl sm:text-3xl font-bold text-black mb-6 sm:mb-8 font-playfair">
             También te puede interesar
           </h2>
           <div className="text-gray-600">
